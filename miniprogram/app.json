@@ -9,6 +9,7 @@
     "pages/databaseGuide/databaseGuide",
     "pages/addFunction/addFunction",
     "pages/addTodo/addTodo",
+    "pages/updatelocation/updatelocation",
     "pages/todoInfo/todoInfo",
     "pages/barometer/barometer",
     "pages/deployFunctions/deployFunctions",
@@ -24,7 +25,12 @@
   "requiredBackgroundModes": [
     "audio",
     "location"
-  ],
+   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "请确认授权"
+    }
+  },
   "window": {
     "backgroundColor": "#FFFFFF",
     "backgroundTextStyle": "light",
@@ -52,7 +58,7 @@
       },
       {
         "pagePath": "pages/circleFriends/circleFriends",
-        "text": "朋友圈",
+        "text": "圈状态",
         "iconPath": "images/2kehu.png",
         "selectedIconPath": "images/1kehu.png"
       },
