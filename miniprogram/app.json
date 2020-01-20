@@ -1,0 +1,77 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/mine/mine",
+    "pages/incident/incident",
+    "pages/state/state",
+    "pages/userConsole/userConsole",
+    "pages/storageConsole/storageConsole",
+    "pages/databaseGuide/databaseGuide",
+    "pages/addFunction/addFunction",
+    "pages/addTodo/addTodo",
+    "pages/todoInfo/todoInfo",
+    "pages/barometer/barometer",
+    "pages/deployFunctions/deployFunctions",
+    "pages/chooseLib/chooseLib",
+    "pages/openapi/openapi",
+    "pages/openapi/serverapi/serverapi",
+    "pages/openapi/callback/callback",
+    "pages/openapi/cloudid/cloudid",
+    "pages/im/im",
+    "pages/circleFriends/circleFriends",
+    "pages/login/login"
+   ],
+  "requiredBackgroundModes": [
+    "audio",
+    "location"
+  ],
+  "window": {
+    "backgroundColor": "#FFFFFF",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "班班易会",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#000000",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "所在",
+        "iconPath":"images/2kanbangdan.png",
+        "selectedIconPath":"images/1kanbangdan.png"
+      },
+      {
+        "pagePath": "pages/incident/incident",
+        "text": "事件",
+        "iconPath": "images/2zhanghaoshezhi.png",
+        "selectedIconPath": "images/1zhanghaoshezhi.png"
+      },
+      {
+        "pagePath": "pages/circleFriends/circleFriends",
+        "text": "朋友圈",
+        "iconPath": "images/2kehu.png",
+        "selectedIconPath": "images/1kehu.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "会空间",
+        "iconPath": "images/2shouye.png",
+        "selectedIconPath": "images/1shouye.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "van-button": "vant-weapp/button",
+    "van-cell": "vant-weapp/cell",
+    "van-cell-group": "vant-weapp/cell-group",
+    "van-picker": "vant-weapp/picker",
+    "van-toast": "vant-weapp/toast",
+    "van-icon": "vant-weapp/icon"
+  },
+
+  "sitemapLocation": "sitemap.json"
+}
