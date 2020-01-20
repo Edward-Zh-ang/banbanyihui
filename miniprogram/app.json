@@ -3,7 +3,11 @@
     "pages/index/index",
     "pages/mine/mine",
     "pages/incident/incident",
+    "pages/classIN/classIN",
+    "pages/myIN/myIN",
     "pages/state/state",
+    "pages/state/matestate/matestate",
+    "pages/state/activity/activity",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
     "pages/databaseGuide/databaseGuide",
@@ -57,7 +61,7 @@
         "selectedIconPath": "images/1zhanghaoshezhi.png"
       },
       {
-        "pagePath": "pages/circleFriends/circleFriends",
+        "pagePath": "pages/state/state",
         "text": "圈状态",
         "iconPath": "images/2kehu.png",
         "selectedIconPath": "images/1kehu.png"
@@ -76,7 +80,11 @@
     "van-cell-group": "vant-weapp/cell-group",
     "van-picker": "vant-weapp/picker",
     "van-toast": "vant-weapp/toast",
-    "van-icon": "vant-weapp/icon"
+    "van-icon": "vant-weapp/icon",
+    "van-tab":"vant-weapp/tab",
+    "van-tabs": "vant-weapp/tabs",
+    "van-grid":"@vant/weapp/grid",
+    "van-grid-item": "@vant/weapp/grid-item"
   },
 
   "sitemapLocation": "sitemap.json"

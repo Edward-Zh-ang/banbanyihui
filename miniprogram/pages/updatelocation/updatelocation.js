@@ -1,4 +1,5 @@
-const db = wx.cloud.database()
+const db = wx.cloud.database();
+const location = db.collection('user_location')
 Page({
 
   /**

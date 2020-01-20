@@ -1,4 +1,6 @@
 // pages/index/index.js
+const db = wx.cloud.database();
+const location = db.collection('user_location')
 Page({
   /**
    * 页面的初始数据
@@ -8,14 +10,63 @@ Page({
     latitude: [],
     markers: []
   },
+  markertap(e) {
+    //console.log(e)
+  },
  /**
  * 生命周期函数--监听页面加载
  */
+  getMyMap(e) {
+    let that = this;
+    //自行查询经纬度 http://www.gpsspg.com/maps.htm
+    const mapLatitude = 23.1194300000,
+      mapLongitude = 113.3212200000;
+    wx.getLocation({
+      type: 'wgs84',
+      success(res) {
+        // 当前自己的经纬度 res.latitude，res.longitude
+        that.setData({
+          latitude: mapLatitude,
+          longitude: mapLongitude,
+          markers: [{
+            id: "0",
+            latitude: mapLatitude,
+            longitude: mapLongitude,
+            iconPath: "",
+            width: 40,
+            height: 40,
+            callout: {
+              'display': 'ALWAYS', 'fontSize': '30rpx', 'content': '广州珠江新城',
+              'padding': '8rpx', 'boxShadow': '0 0 5rpx #333', 'borderRadius': '4rpx'
+            }
+          }],
+        })
+      }
+    })
+  },
   onLoad: function (options) {
-
+    /*.doc(options.id)*/
+    this.getMyMap()
+    location.get().then(res => {
+      this.setData({
+        longitude: res.longitude,
+        latitude: res.latitude,
+        markers: [{
+          longitude: res.longitude,
+          latitude: res.latitude,
+          iconPath: "",
+          width: 40,
+          height: 40,
+          callout: {
+            'display': 'ALWAYS', 'fontSize': '30rpx', 'content': '广',
+            'padding': '8rpx', 'boxShadow': '0 0 5rpx #333', 'borderRadius': '4rpx'
+          }
+        }]
+      })
+    })
   },
 
-
+/*
   getBlessing: function () {
     var that = this;
     var getUserPic = function (pic_url, i) {
