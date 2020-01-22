@@ -1,2 +1,14 @@
-<!--pages/state/state.wxml-->
-<text>pages/state/state.wxml</text>
+<van-grid clickable column-num="2">
+  <van-grid-item
+    icon="home-o"
+    link-type="navigateTo"
+    url="../state/matestate/matestate"
+    text="通讯状态"
+  />
+  <van-grid-item
+    icon="search"
+    link-type="navigateTo"
+    url="../state/activity/activity"
+    text="活动动态"
+  />
+</van-grid>

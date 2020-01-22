@@ -1,2 +1,7 @@
 <!--pages/incident/incident.wxml-->
-<text>pages/incident/incident.wxml</text>
+<van-tabs bind:click="onClick" animated>
+    <van-tab title="班级事件" name="a">班级事件概要
+    </van-tab>
+    <van-tab title="我的事件" name="b">我的事件概要</van-tab>
+
+</van-tabs>
