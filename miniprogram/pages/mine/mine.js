@@ -31,6 +31,7 @@ Page({
               })
             }
           })
+          console.log(avatarUrl)
         }
       }
     })

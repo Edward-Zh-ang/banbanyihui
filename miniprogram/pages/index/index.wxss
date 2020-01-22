@@ -1,1 +1,7 @@
 /* pages/index/index.wxss */
+open-data[type="userAvatarUrl"]{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    overflow: hidden;
+}
