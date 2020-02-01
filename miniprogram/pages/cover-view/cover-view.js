@@ -1,4 +1,4 @@
-// pages/barometer/barometer.js
+// pages/cover-view/cover-view.js
 Page({
 
   /**

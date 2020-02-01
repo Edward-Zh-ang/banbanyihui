@@ -1,7 +1,24 @@
 /* pages/index/index.wxss */
-open-data[type="userAvatarUrl"]{
-    width: 100rpx;
-    height: 100rpx;
-    border-radius: 50%;
-    overflow: hidden;
+.cover-view {
+  position: fixed;
+  top: 900rpx;
+  right: 10rpx;
+  /* opacity: .7; */
+}
+
+.flex-wrp {
+  display: flex;
+}
+
+.flex-item {
+  width: 80rpx;
+  height: 100rpx;
+  font-size: 20rpx;
+}
+
+open-data[type="userAvatarUrl"] {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  overflow: hidden;
 }
