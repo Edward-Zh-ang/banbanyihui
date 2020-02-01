@@ -59,6 +59,13 @@
 					"id": -1,
 					"name": "pages/state/state",
 					"pathName": "pages/state/state",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/incident/incident",
+					"pathName": "pages/incident/incident",
 					"scene": null
 				}
 			]

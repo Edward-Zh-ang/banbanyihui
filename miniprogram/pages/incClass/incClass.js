@@ -1,4 +1,4 @@
-// pages/circleFriends/circleFriends.js
+// pages/incClass/incClass.js
 Page({
 
   /**

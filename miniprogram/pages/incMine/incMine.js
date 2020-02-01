@@ -1,4 +1,4 @@
-// pages/classIN/classIN.js
+// pages/incMine/incMine.js
 Page({
 
   /**

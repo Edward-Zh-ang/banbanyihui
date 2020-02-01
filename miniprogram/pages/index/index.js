@@ -2,25 +2,40 @@
 const db = wx.cloud.database();
 const location = db.collection('user_location')
 Page({
+
   /**
    * 页面的初始数据
+   *   onShareAppMessage() {
+    return {
+      title: 'cover-view',
+      path: 'pages/cover-view/cover-view'
+    }
+  },
    */
   data: {
     longitude: [],
     latitude: [],
     markers: []
   },
-  markertap(e) {
-    //console.log(e)
+  onLaunch() {
+    wx.cloud.init({
+      traceUser: true,
+    })
+    wx.getSystemInfo({
+      success: function (res) {
+        that.globalData.statusBarHeight = res.statusBarHeight
+      }
+    })
   },
+
  /**
  * 生命周期函数--监听页面加载
  */
   getMyMap(e) {
     let that = this;
     //自行查询经纬度 http://www.gpsspg.com/maps.htm
-    const mapLatitude = 23.1194300000,
-      mapLongitude = 113.3212200000;
+    const mapLatitude = 34.1194300000,
+      mapLongitude = 108.3212200000;
     wx.getLocation({
       type: 'wgs84',
       success(res) {
@@ -36,7 +51,7 @@ Page({
             width: 40,
             height: 40,
             callout: {
-              'display': 'ALWAYS', 'fontSize': '30rpx', 'content': '广州珠江新城',
+              'display': 'ALWAYS', 'fontSize': '30rpx', 'content': '中心',
               'padding': '8rpx', 'boxShadow': '0 0 5rpx #333', 'borderRadius': '4rpx'
             }
           }],
@@ -163,5 +178,11 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  
+  onPageScroll: function (e) {
+    this.setData({
+      scrollTop: e.scrollTop
+    })
   }
 })

@@ -3,33 +3,29 @@
     "pages/index/index",
     "pages/mine/mine",
     "pages/incident/incident",
-    "pages/classIN/classIN",
-    "pages/myIN/myIN",
+    "pages/incClass/incClass",
+    "pages/incMine/incMine",
     "pages/state/state",
     "pages/state/matestate/matestate",
     "pages/state/activity/activity",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
-    "pages/databaseGuide/databaseGuide",
     "pages/addFunction/addFunction",
     "pages/addTodo/addTodo",
     "pages/updatelocation/updatelocation",
     "pages/todoInfo/todoInfo",
-    "pages/barometer/barometer",
     "pages/deployFunctions/deployFunctions",
-    "pages/chooseLib/chooseLib",
     "pages/openapi/openapi",
     "pages/openapi/serverapi/serverapi",
     "pages/openapi/callback/callback",
     "pages/openapi/cloudid/cloudid",
-    "pages/im/im",
-    "pages/circleFriends/circleFriends",
-    "pages/login/login"
-   ],
+    "pages/login/login",
+    "pages/cover-view/cover-view"
+  ],
   "requiredBackgroundModes": [
     "audio",
     "location"
-   ],
+  ],
   "permission": {
     "scope.userLocation": {
       "desc": "请确认授权"
@@ -40,8 +36,10 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#FFFFFF",
     "navigationBarTitleText": "班班易会",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
   },
+
   "tabBar": {
     "color": "#999999",
     "selectedColor": "#000000",
@@ -51,8 +49,8 @@
       {
         "pagePath": "pages/index/index",
         "text": "所在",
-        "iconPath":"images/2kanbangdan.png",
-        "selectedIconPath":"images/1kanbangdan.png"
+        "iconPath": "images/2kanbangdan.png",
+        "selectedIconPath": "images/1kanbangdan.png"
       },
       {
         "pagePath": "pages/incident/incident",
@@ -75,17 +73,17 @@
     ]
   },
   "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom",
     "van-button": "vant-weapp/button",
     "van-cell": "vant-weapp/cell",
     "van-cell-group": "vant-weapp/cell-group",
     "van-picker": "vant-weapp/picker",
     "van-toast": "vant-weapp/toast",
     "van-icon": "vant-weapp/icon",
-    "van-tab":"vant-weapp/tab",
+    "van-tab": "vant-weapp/tab",
     "van-tabs": "vant-weapp/tabs",
-    "van-grid":"@vant/weapp/grid",
+    "van-grid": "@vant/weapp/grid",
     "van-grid-item": "@vant/weapp/grid-item"
   },
-
   "sitemapLocation": "sitemap.json"
 }
