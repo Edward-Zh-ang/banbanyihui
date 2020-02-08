@@ -1,4 +1,6 @@
-<!--index.wxml-->
+<scroll-view scroll-y class="scrollPage">
+  <image src="https://6261-banbanyihui-rzvml-1301142674.tcb.qcloud.la/images/statenew.png?sign=e023e669052b47bdcb82af73fc47188f&t=1581158298" mode='widthFix' class='png' style='width:100%;height:250rpx'>
+  </image>
 <view class="container">
   <!-- <button open-type="share"></button> -->
   <!-- 用户 openid -->
@@ -56,6 +58,5 @@
       <text>云调用</text>
     </navigator>
   </view>
-
-
 </view>
+</scroll-view>

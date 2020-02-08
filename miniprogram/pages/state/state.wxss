@@ -1,1 +1,17 @@
 /* pages/state/state.wxss */
+.cu-card>.cu-item.bg-img.shadow-blur {
+  overflow: initial;
+  display: block;
+	width: 92%;
+  height: 300rpx;
+}
+
+.cu-card>.cu-item.bg-img.shadow-blur>.cardTitle {
+  font-size:26px;
+  color:white;
+  font-weight:bold;
+  font-style:italic;
+  letter-spacing:2px; 
+  text-indent:2em; 
+  padding-top:40px;
+}

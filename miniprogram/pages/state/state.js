@@ -1,66 +1,29 @@
 // pages/state/state.js
-Page({
-
-  /**
-   * 页面的初始数据
-   */
+const app = getApp();
+Component({
+  options: {
+    addGlobalClass: true,
+  },
   data: {
-
+    StatusBar: app.globalData.StatusBar,
+    CustomBar: app.globalData.CustomBar,
+    list: [{
+      title: '通讯状态',
+      img: 'https://image.weilanwl.com/color2.0/plugin/qpct2148.jpg',
+      url: '/state/matestate/matestate'
+    },
+    {
+      title: '活动动态',
+      img: 'https://image.weilanwl.com/color2.0/plugin/qpczdh2307.jpg',
+      url: '/state/activity/activity'
+    }
+    ]
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  methods: {
+    toChild(e) {
+      wx.navigateTo({
+        url: '/pages' + e.currentTarget.dataset.url
+      })
+    },
   }
-})
+});

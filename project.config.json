@@ -56,16 +56,23 @@
 					"query": ""
 				},
 				{
-					"id": -1,
-					"name": "pages/state/state",
+					"id": 1,
+					"name": "圈状态",
 					"pathName": "pages/state/state",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/incident/incident",
+					"id": 2,
+					"name": "事件",
 					"pathName": "pages/incident/incident",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "会空间",
+					"pathName": "pages/mine/mine",
 					"scene": null
 				}
 			]

@@ -49,8 +49,8 @@
       {
         "pagePath": "pages/index/index",
         "text": "所在",
-        "iconPath": "images/2kanbangdan.png",
-        "selectedIconPath": "images/1kanbangdan.png"
+        "iconPath": "images/2locate.png",
+        "selectedIconPath": "images/1locate.png"
       },
       {
         "pagePath": "pages/incident/incident",

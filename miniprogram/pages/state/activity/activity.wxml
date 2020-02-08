@@ -1,2 +1,7 @@
 <!--pages/state/activity/activity.wxml-->
-<text>pages/state/activity/activity.wxml</text>
+<scroll-view scroll-y class="scrollPage">
+  <cu-custom bgImage="https://6261-banbanyihui-rzvml-1301142674.tcb.qcloud.la/images/tongxunback.png?sign=3f57efde1f1ad32295e7e5dbc27e42d8&t=1580527365" isBack="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content">活动动态</view>
+  </cu-custom>
+</scroll-view>
