@@ -1,10 +1,9 @@
 <!--pages/index/index.wxml-->
-<cu-custom>
-  <view slot="content">班班易会</view>
-</cu-custom>
+
+<view slot="content" style="flex-direction:row;align-items: flex-end;">班班易会</view>
+<image src='https://6261-banbanyihui-rzvml-1301142674.tcb.qcloud.la/images/banbaneasy.png?sign=7df173af41a357a5caf77afd059bb81f&t=1580479888' mode='widthFix' class='png' style='width:100%;height:200rpx'></image>
 
 <scroll-view scroll-y class="scrollPage">
-  <image src='https://6261-banbanyihui-rzvml-1301142674.tcb.qcloud.la/images/banbaneasy.png?sign=7df173af41a357a5caf77afd059bb81f&t=1580479888' mode='widthFix' class='png' style='width:100%;height:200rpx'></image>
   <map id="{{id}}" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" bindmarkertap="markertap" scale="4" show-location layer-style="2" style="width: 100%; height: 500px;" />
 
   <cover-view class="cover-view">
@@ -29,5 +28,4 @@
     </cover-view>
   </cover-view>
 
-  <open-data type='userAvatarUrl'></open-data>
 </scroll-view>

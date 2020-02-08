@@ -1,121 +1,91 @@
 //index.js
-const app = getApp()
-
-Page({
+const app = getApp();
+Component({
+  options: {
+    addGlobalClass: true,
+  },
   data: {
-    avatarUrl: './user-unlogin.png',
-    userInfo: {},
-    logged: false,
-    takeSession: false,
-    requestResult: ''
+    starCount: 0,
+    forksCount: 0,
+    visitTotal: 0,
   },
+  attached() {
+    console.log("success")
+    let that = this;
+    wx.showLoading({
+      title: '数据加载中',
+      mask: true,
+    })
+    let i = 0;
+    numDH();
 
-  onLoad: function() {
-    if (!wx.cloud) {
-      wx.redirectTo({
-        url: '../chooseLib/chooseLib',
-      })
-      return
-    }
-
-    // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              this.setData({
-                avatarUrl: res.userInfo.avatarUrl,
-                userInfo: res.userInfo
-              })
-            }
+    function numDH() {
+      if (i < 20) {
+        setTimeout(function() {
+          that.setData({
+            starCount: i,
+            forksCount: i,
+            visitTotal: i
           })
-          console.log(avatarUrl)
-        }
+          i++
+          numDH();
+        }, 20)
+      } else {
+        that.setData({
+          starCount: that.coutNum(0),
+          forksCount: that.coutNum(1),
+          visitTotal: that.coutNum(18)
+        })
       }
-    })
-  },
-
-  onGetUserInfo: function(e) {
-    if (!this.logged && e.detail.userInfo) {
-      this.setData({
-        logged: true,
-        avatarUrl: e.detail.userInfo.avatarUrl,
-        userInfo: e.detail.userInfo
-      })
     }
+    wx.hideLoading()
   },
-
-  onGetOpenid: function() {
-    // 调用云函数
-    wx.cloud.callFunction({
-      name: 'login',
-      data: {},
-      success: res => {
-        console.log('[云函数] [login] user openid: ', res.result.openid)
-        app.globalData.openid = res.result.openid
-        // wx.navigateTo({
-        //   url: '../userConsole/userConsole',
-        // })
-      },
-      fail: err => {
-        console.error('[云函数] [login] 调用失败', err)
-        wx.navigateTo({
-          url: '../deployFunctions/deployFunctions',
+  methods: {
+    onGetUserInfo: function (e) {
+      if (!this.logged && e.detail.userInfo) {
+        app.globalData.userInfo = e.detail.userInfo;
+        this.setData({
+          logged: true,
+          avatarUrl: e.detail.userInfo.avatarUrl,
+          userInfo: e.detail.userInfo
         })
       }
-    })
-  },
-
-  // 上传图片
-  doUpload: function () {
-    // 选择图片
-    wx.chooseImage({
-      count: 1,
-      sizeType: ['compressed'],
-      sourceType: ['album', 'camera'],
-      success: function (res) {
-
-        wx.showLoading({
-          title: '上传中',
-        })
-
-        const filePath = res.tempFilePaths[0]
-        
-        // 上传图片
-        const cloudPath = 'my-image' + filePath.match(/\.[^.]+?$/)[0]
-        wx.cloud.uploadFile({
-          cloudPath,
-          filePath,
-          success: res => {
-            console.log('[上传文件] 成功：', res)
-
-            app.globalData.fileID = res.fileID
-            app.globalData.cloudPath = cloudPath
-            app.globalData.imagePath = filePath
-            
-            wx.navigateTo({
-              url: '../storageConsole/storageConsole'
-            })
-          },
-          fail: e => {
-            console.error('[上传文件] 失败：', e)
-            wx.showToast({
-              icon: 'none',
-              title: '上传失败',
-            })
-          },
-          complete: () => {
-            wx.hideLoading()
-          }
-        })
-
-      },
-      fail: e => {
-        console.error(e)
+    },
+    coutNum(e) {
+      if (e > 1000 && e < 10000) {
+        e = (e / 1000).toFixed(1) + 'k'
       }
-    })
-  },
-
+      if (e > 10000) {
+        e = (e / 10000).toFixed(1) + 'W'
+      }
+      return e
+    },
+    CopyLink(e) {
+      wx.setClipboardData({
+        data: e.currentTarget.dataset.link,
+        success: res => {
+          wx.showToast({
+            title: '已复制',
+            duration: 1000,
+          })
+        }
+      })
+    },
+    showModal(e) {
+      this.setData({
+        modalName: e.currentTarget.dataset.target
+      })
+    },
+    hideModal(e) {
+      this.setData({
+        modalName: null
+      })
+    },
+    showQrcode() {
+      wx.previewImage({
+        urls: ['https://6261-banbanyihui-rzvml-1301142674.tcb.qcloud.la/images/moneyt.png?sign=5d513bf913344e7e8c04342fb6f9405d&t=1581175743'],
+        current: 'https://6261-banbanyihui-rzvml-1301142674.tcb.qcloud.la/images/moneyt.png?sign=5d513bf913344e7e8c04342fb6f9405d&t=1581175743' // 当前显示图片的http链接      
+      })
+    },
+  }
 })

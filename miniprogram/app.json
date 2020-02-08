@@ -20,7 +20,10 @@
     "pages/openapi/callback/callback",
     "pages/openapi/cloudid/cloudid",
     "pages/login/login",
-    "pages/cover-view/cover-view"
+    "pages/cover-view/cover-view",
+    "pages/about/about/about",
+    "pages/about/log/log",
+    "pages/about/former/former"
   ],
   "requiredBackgroundModes": [
     "audio",
@@ -49,14 +52,14 @@
       {
         "pagePath": "pages/index/index",
         "text": "所在",
-        "iconPath": "images/2kanbangdan.png",
-        "selectedIconPath": "images/1kanbangdan.png"
+        "iconPath": "images/2locate.png",
+        "selectedIconPath": "images/1locate.png"
       },
       {
         "pagePath": "pages/incident/incident",
         "text": "事件",
-        "iconPath": "images/2zhanghaoshezhi.png",
-        "selectedIconPath": "images/1zhanghaoshezhi.png"
+        "iconPath": "images/2incident.png",
+        "selectedIconPath": "images/1incident.png"
       },
       {
         "pagePath": "pages/state/state",
