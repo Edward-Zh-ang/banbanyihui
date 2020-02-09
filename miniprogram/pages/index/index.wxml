@@ -1,27 +1,21 @@
 <!--pages/index/index.wxml-->
-<image src='https://6261-banbanyihui-rzvml-1301142674.tcb.qcloud.la/images/banban.jpg?sign=0c5e1948f2880eeec3b6aedd10708c39&t=1581216071' mode='widthFix' class='png' style='width:100%;height:200rpx'></image>
 <scroll-view scroll-y class="scrollPage">
+  <image src='https://6261-banbanyihui-rzvml-1301142674.tcb.qcloud.la/images/banban.jpg?sign=0c5e1948f2880eeec3b6aedd10708c39&t=1581216071' mode='widthFix' class='png' style='width:100%;height:200rpx'></image>
   <map id="{{id}}" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" bindmarkertap="markertap" scale="4" show-location layer-style="2" style="width: 100%; height: 500px;">
-    <cover-view class="cover-view">
-      <cover-view class="container">
-        <cover-view class="flex-wrp" style="flex-direction:column;">
-          <!--cover-view class="flex-item">
-          <button class='cu-btn round lines-green' id="clearBtn" open-type="share">
-            <text>清除</text>
-          </button>
-        </cover-view-->
-          <cover-view class="flex-item">
-            <navigator url='../updatelocation/updatelocation' class='cu-btn round lines-green' id="updateBtn">
-              <text>更新</text>
-            </navigator>
-          </cover-view>
-          <cover-view class="flex-item">
-            <navigator url='../index/index' class='cu-btn round lines-green' id="renewBtn">
-              <text>复位</text>
-            </navigator>
-          </cover-view>
-        </cover-view>
-      </cover-view>
-    </cover-view>
   </map>
+  <view class="cover-view">
+    <view class="flex-wrp" style="flex-direction:column;">
+      <view class="flex-item">
+        <van-button id="updateBtn" bind:click="updateLo" round size="small" color="#4bb0ff">
+          更新
+        </van-button>
+      </view>
+      <view class="flex-item">
+        <van-button id="renewBtn" bind:click="renewPage" round size="small" color="#4bb0ff">
+          复位
+        </van-button>
+      </view>
+    </view>
+  </view>
+
 </scroll-view>

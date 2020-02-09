@@ -13,7 +13,7 @@
 .flex-item {
   width: 115rpx;
   height: 68rpx;
-  font-size: 14rpx;
+  font-size: 16rpx;
 }
 
 open-data[type="userAvatarUrl"] {
