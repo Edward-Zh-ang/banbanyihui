@@ -47,14 +47,8 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": -1,
 			"list": [
-				{
-					"id": -1,
-					"name": "db guide",
-					"pathName": "pages/databaseGuide/databaseGuide",
-					"query": ""
-				},
 				{
 					"id": 1,
 					"name": "圈状态",
@@ -73,6 +67,21 @@
 					"id": 3,
 					"name": "会空间",
 					"pathName": "pages/mine/mine",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "后续创意",
+					"pathName": "pages/about/former/former",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "地图",
+					"pathName": "pages/index/index",
+					"query": "",
 					"scene": null
 				}
 			]

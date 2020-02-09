@@ -1,31 +1,27 @@
 <!--pages/index/index.wxml-->
-
-<view slot="content" style="flex-direction:row;align-items: flex-end;">班班易会</view>
-<image src='https://6261-banbanyihui-rzvml-1301142674.tcb.qcloud.la/images/banbaneasy.png?sign=7df173af41a357a5caf77afd059bb81f&t=1580479888' mode='widthFix' class='png' style='width:100%;height:200rpx'></image>
-
+<image src='https://6261-banbanyihui-rzvml-1301142674.tcb.qcloud.la/images/banban.jpg?sign=0c5e1948f2880eeec3b6aedd10708c39&t=1581216071' mode='widthFix' class='png' style='width:100%;height:200rpx'></image>
 <scroll-view scroll-y class="scrollPage">
-  <map id="{{id}}" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" bindmarkertap="markertap" scale="4" show-location layer-style="2" style="width: 100%; height: 500px;" />
-
-  <cover-view class="cover-view">
-    <cover-view class="container">
-      <cover-view class="flex-wrp" style="flex-direction:column;">
-        <cover-view class="flex-item">
+  <map id="{{id}}" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" bindmarkertap="markertap" scale="4" show-location layer-style="2" style="width: 100%; height: 500px;">
+    <cover-view class="cover-view">
+      <cover-view class="container">
+        <cover-view class="flex-wrp" style="flex-direction:column;">
+          <!--cover-view class="flex-item">
           <button class='cu-btn round lines-green' id="clearBtn" open-type="share">
             <text>清除</text>
           </button>
-        </cover-view>
-        <cover-view class="flex-item">
-          <button class='cu-btn round lines-green' id="updateBtn" open-type="share">
-            <text>更新</text>
-          </button>
-        </cover-view>
-        <cover-view class="flex-item">
-          <button class='cu-btn round lines-green' id="renewBtn" open-type="share">
-            <text>复位</text>
-          </button>
+        </cover-view-->
+          <cover-view class="flex-item">
+            <navigator url='../updatelocation/updatelocation' class='cu-btn round lines-green' id="updateBtn">
+              <text>更新</text>
+            </navigator>
+          </cover-view>
+          <cover-view class="flex-item">
+            <navigator url='../index/index' class='cu-btn round lines-green' id="renewBtn">
+              <text>复位</text>
+            </navigator>
+          </cover-view>
         </cover-view>
       </cover-view>
     </cover-view>
-  </cover-view>
-
+  </map>
 </scroll-view>

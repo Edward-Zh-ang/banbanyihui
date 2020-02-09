@@ -1,5 +1,5 @@
 <!--pages/incident/incident.wxml-->
-<image src="https://6261-banbanyihui-rzvml-1301142674.tcb.qcloud.la/images/hdback.jpg?sign=d632654b949358ae9ea55fe1d6183da5&t=1580479923" mode='widthFix' class='png' style='width:100%;height:250rpx'>
+<image src="https://6261-banbanyihui-rzvml-1301142674.tcb.qcloud.la/images/activity.jpg?sign=e10ce2e83e95e9cee4b100c9e70ff9fc&t=1581216241" mode='widthFix' class='png' style='width:100%;height:250rpx'>
 </image>
 <scroll-view scroll-y class="scrollPage">
   <van-tabs bind:click="onClick" animated >

@@ -1,0 +1,2 @@
+<cu-custom bgColor="bg-gradual-green" isBack="{{true}}"><view slot="backText">返回</view><view slot="content">我的流水</view></cu-custom>
+<text>資金流水功能待完善</text>

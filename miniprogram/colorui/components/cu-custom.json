@@ -1,4 +1,6 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "van-collapse": "@vant/weapp/dist/collapse/index",
+    "van-collapse-item": "@vant/weapp/dist/collapse-item/index"}
 }

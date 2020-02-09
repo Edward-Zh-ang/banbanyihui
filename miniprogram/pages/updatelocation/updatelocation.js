@@ -66,18 +66,6 @@ Page({
             }
           })
         }
-        // 初始化进入，未授权
-        else if (res.authSetting['scope.userLocation'] == undefined) {
-          // console.log('authSetting:status:初始化进入，未授权', res.authSetting['scope.userLocation'])
-          //调用wx.getLocation的API
-          vm.getLocation(res)
-        }
-        // 已授权
-        else if (res.authSetting['scope.userLocation']) {
-          // console.log('authSetting:status:已授权', res.authSetting['scope.userLocation'])
-          //调用wx.getLocation的API
-          vm.getLocation(res)
-        }
       }
     })
   },

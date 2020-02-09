@@ -5,9 +5,9 @@ Component({
     addGlobalClass: true,
   },
   data: {
-    starCount: 0,
-    forksCount: 0,
-    visitTotal: 0,
+    memberCount: 0,
+    actCount: 0,
+    fundTotal: 0,
   },
   attached() {
     console.log("success")
@@ -23,18 +23,18 @@ Component({
       if (i < 20) {
         setTimeout(function() {
           that.setData({
-            starCount: i,
-            forksCount: i,
-            visitTotal: i
+            memberCount: i,
+            actCount: i,
+            fundTotal: i
           })
           i++
           numDH();
         }, 20)
       } else {
         that.setData({
-          starCount: that.coutNum(0),
-          forksCount: that.coutNum(1),
-          visitTotal: that.coutNum(18)
+          memberCount: that.coutNum(0),
+          actCount: that.coutNum(1),
+          fundTotal: that.coutNum(0)
         })
       }
     }

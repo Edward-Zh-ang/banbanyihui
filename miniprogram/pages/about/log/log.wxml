@@ -1,2 +1,32 @@
-<!--pages/about/log/log.wxml-->
-<text>pages/about/log/log.wxml</text>
+<cu-custom bgColor="bg-gradual-green" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">班志</view>
+</cu-custom>
+<view class="cu-timeline">
+  <view class="cu-item text-green">
+    <view class="bg-gradual-green content shadow">
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-white text-green">2020/01/17</view>
+        <view class="cu-tag line-white">2020年寒假聚餐</view>
+      </view>
+      <view class="margin-top-sm text-content">
+        <view>1.实到29人，中午于文峰大道千禧唐宫聚餐</view>
+        <view>2.下午部分人于平原路六艺茶餐厅桌游</view>
+        <view>3.晚上部分人于德隆街好久不见聚餐</view>
+      </view>
+    </view>
+  </view>
+  <view class="cu-item text-green">
+    <view class="bg-green content shadow">
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-white text-green">2020/01/10</view>
+        <view class="cu-tag line-white">声明</view>
+      </view>
+      <view class="margin-top-sm text-content">
+        <view>1.本班为河南省安阳市第一中学2016届一班，毕业生共48人，班主任董继军老师</view>
+        <view>2.本小程序试运行仅限于本班内</view>
+        <view>3.本小程序用于非商业目的</view>
+      </view>
+    </view>
+  </view>
+</view>
