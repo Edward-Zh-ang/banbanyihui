@@ -7,6 +7,7 @@
     "pages/incMine/incMine",
     "pages/state/state",
     "pages/state/matestate/matestate",
+    "pages/addstate/addstate",
     "pages/state/activity/activity",
     "pages/mine/mine",
     "pages/about/money/money",

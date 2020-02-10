@@ -88,6 +88,20 @@
 					"id": -1,
 					"name": "更新地图",
 					"pathName": "pages/updatelocation/updatelocation",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "通讯状态",
+					"pathName": "pages/state/matestate/matestate",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "添加通讯状态",
+					"pathName": "pages/addstate/addstate",
 					"scene": null
 				}
 			]

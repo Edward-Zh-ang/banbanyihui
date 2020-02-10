@@ -15,7 +15,8 @@ Page({
   data: {
     longitude: [],
     latitude: [],
-    markers: []
+    markers: [],
+    scrollTop: 0
   },
   onLaunch() {
     wx.cloud.init({
@@ -27,7 +28,7 @@ Page({
       }
     })
   },
-  updateLo:function(options) {
+  updateLo: function(options) {
     wx.navigateTo({
       url: '../updatelocation/updatelocation',
     })
@@ -94,6 +95,9 @@ Page({
     })
   },
   renewPage: function() {
+    wx.pageScrollTo({
+      scrollTop: 300
+    })
     this.getMyMap()
     location.get().then(res => {
       this.setData({

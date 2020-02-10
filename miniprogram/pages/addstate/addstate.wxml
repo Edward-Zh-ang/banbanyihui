@@ -1,0 +1,72 @@
+<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">添加我的通讯状态</view>
+</cu-custom>
+<form>
+  <view class="cu-form-group margin-top">
+    <view class="title">姓名</view>
+    <input placeholder="请输入姓名"></input>
+    <switch class="switch-sex" checked></switch>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">手机</view>
+    <input placeholder="请输入电话"></input>
+    <view class="cu-capsule radius">
+      <view class="cu-tag bg-blue">
+        +86
+      </view>
+      <view class="cu-tag line-blue">
+        中国大陆
+      </view>
+    </view>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">大学</view>
+    <input placeholder="请输入本科学校"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">从事方向</view>
+    <textarea maxlength="-1" placeholder="请输入本科毕业后大致学校或行业规划">
+      <input></input>
+    </textarea>
+
+  </view>
+  <view class="cu-form-group">
+    <view class="title">我的生日</view>
+    <picker mode="date" value="{{date}}" start="1995-09-01" end="2005-09-01" bindchange="DateChange">
+      <view class="picker">
+        {{date}}
+      </view>
+    </picker>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">常驻地址</view>
+    <picker mode="region" bindchange="RegionChange" value="{{region}}" custom-item="{{customItem}}">
+      <view class="picker">
+        {{region[0]}}，{{region[1]}}，{{region[2]}}
+      </view>
+    </picker>
+  </view>
+  <view class="cu-bar bg-white margin-top">
+    <view class="action">
+      近照上传
+    </view>
+    <view class="action">
+      {{imgList.length}}/4
+    </view>
+  </view>
+  <view class="cu-form-group">
+    <view class="grid col-4 grid-square flex-sub">
+      <view class="bg-img" wx:for="{{imgList}}" wx:key="index" bindtap="ViewImage" data-url="{{imgList[index]}}">
+        <image src='{{imgList[index]}}' mode='aspectFill'></image>
+        <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+          <text class="cuIcon-close"></text>
+        </view>
+      </view>
+      <view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<4}}">
+        <text class="cuIcon-cameraadd"></text>
+      </view>
+    </view>
+  </view>
+</form>
+<van-button class='flex-item' plain type="primary" size="large" bindtap="handon">提交信息</van-button>
