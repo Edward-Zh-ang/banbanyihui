@@ -1,4 +1,0 @@
-<!--pages/login/login.wxml-->
-<view class='page' wx:for='{{data}}' bindtap='TouchItem'>
-  <label>{{item}}</label>
-</view>

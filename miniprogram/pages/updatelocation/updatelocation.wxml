@@ -1,2 +1,5 @@
-<!--pages/updatelocation/updatelocation.wxml-->
-<text>pages/updatelocation/updatelocation.wxml</text>
+<cu-custom bgColor="bg-gradual-pink">
+  <view slot="content">更新我的位置</view>
+</cu-custom>
+
+  <van-button icon="star-o" type="primary" block size="large" color="linear-gradient(to right, #4bb0ff, #6149f6)">使用当前位置</van-button>

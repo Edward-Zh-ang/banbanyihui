@@ -1,4 +1,12 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "van-collapse": "@vant/weapp/dist/collapse/index",
+    "van-collapse-item": "@vant/weapp/dist/collapse-item/index",
+    "van-search": "@vant/weapp/dist/search/index",
+    "van-skeleton": "@vant/weapp/dist/skeleton/index",
+    "van-image": "@vant/weapp/dist/image/index",
+    "van-index-bar": "@vant/weapp/dist/index-bar/index",
+    "van-index-anchor": "@vant/weapp/dist/index-anchor/index"
+  }
 }

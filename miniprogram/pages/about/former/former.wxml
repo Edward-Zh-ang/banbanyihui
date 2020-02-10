@@ -1,2 +1,14 @@
-<!--pages/about/former/former.wxml-->
-<text>pages/about/former/former.wxml</text>
+<cu-custom bgColor="bg-gradual-green" isBack="{{true}}">
+  <view slot="backText">后续规划</view>
+</cu-custom>
+<van-collapse value="{{ activeName }}" bind:change="onChange" accordion>
+  <van-collapse-item title="易会活动推荐" name="1">
+    针对每个地区，不同人数规模，进行活动及门店的推荐，优惠活动分享。
+  </van-collapse-item>
+  <van-collapse-item title="易会基金管理" name="2">
+    进行班级基金的管理，根据班级总基金，建立每个人的个人流水，每次活动直接可视化运算费用。
+  </van-collapse-item>
+  <van-collapse-item title="易会-年级版" name="3">
+    链接年级版小程序，拓展人脉。
+  </van-collapse-item>
+</van-collapse>

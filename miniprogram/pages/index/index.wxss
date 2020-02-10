@@ -1,8 +1,8 @@
 /* pages/index/index.wxss */
 .cover-view {
   position: fixed;
-  top: 900rpx;
-  right: 10rpx;
+  top: 1020rpx;
+  right: 20rpx;
   /* opacity: .7; */
 }
 
@@ -11,9 +11,9 @@
 }
 
 .flex-item {
-  width: 80rpx;
-  height: 100rpx;
-  font-size: 20rpx;
+  width: 115rpx;
+  height: 68rpx;
+  font-size: 16rpx;
 }
 
 open-data[type="userAvatarUrl"] {

@@ -1,0 +1,9 @@
+.cu-form-group .title {
+  min-width: calc(4em + 30rpx);
+}
+
+.flex-item {
+  display: flex;
+  padding-top: 20px;
+  justify-content: center;
+}

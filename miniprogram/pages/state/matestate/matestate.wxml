@@ -1,6 +1,54 @@
-<scroll-view scroll-y class="scrollPage">
-  <cu-custom bgImage="https://6261-banbanyihui-rzvml-1301142674.tcb.qcloud.la/images/tongxunback.png?sign=3f57efde1f1ad32295e7e5dbc27e42d8&t=1580527365" isBack="{{true}}">
-    <view slot="backText">返回</view>
-    <view slot="content">通讯状态</view>
-  </cu-custom>
+<cu-custom bgImage="https://image.weilanwl.com/color2.0/plugin/sylb2244.jpg" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">通讯状态</view>
+</cu-custom>
+<scroll-view>
+  <view style="width:100%;">
+    <SearchBar id="SearchBar" addflag="{{addflag}}" addimg="{{addimg}}" searchstr="{{searchstr}}" bind:addhandle="addhandle" bind:searchList="searchList" bind:endsearchList="endsearchList" bind:cancelsearch="cancelsearch" bind:activity_clear="activity_clear">
+    </SearchBar>
+  </view>
+  <van-collapse value="{{ activeNames }}" bind:change="onChange" accordion>
+    <van-index-bar scroll-top="{{ scrollTop }}">
+      <view>
+        <van-index-anchor index="A" />
+
+        <van-collapse-item name="1">
+          <view slot="title">
+            <van-icon name="{{userURL}}" size="5" /> 张恺祺 </view>
+          第一个人
+        </van-collapse-item>
+      </view>
+
+      <view>
+        <van-index-anchor index="B" />
+
+        <van-collapse-item name="2">
+          <view slot="title">
+            <van-icon name="{{userURL}}" size="5" /> 张恺祺 </view>
+          第二个人
+        </van-collapse-item>
+      </view>
+
+      <view>
+        <van-index-anchor index="C" />
+
+        <van-collapse-item name="3">
+          <view slot="title">
+            <van-icon name="{{userURL}}" size="5" /> 张恺祺 </view>
+          第三个人 </van-collapse-item>
+      </view>
+
+      <view>
+        <van-index-anchor index="D" />
+
+        <van-collapse-item name="4">
+          <view slot="title">
+            <van-icon name="{{userURL}}" size="5" /> 张恺祺 </view>
+          第四个人
+        </van-collapse-item>
+
+      </view>
+
+    </van-index-bar>
+  </van-collapse>
 </scroll-view>

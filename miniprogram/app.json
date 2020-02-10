@@ -1,29 +1,28 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/mine/mine",
+    "pages/updatelocation/updatelocation",
     "pages/incident/incident",
     "pages/incClass/incClass",
     "pages/incMine/incMine",
     "pages/state/state",
     "pages/state/matestate/matestate",
+    "pages/addstate/addstate",
     "pages/state/activity/activity",
+    "pages/mine/mine",
+    "pages/about/money/money",
+    "pages/about/about/about",
+    "pages/about/log/log",
+    "pages/about/former/former",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
     "pages/addFunction/addFunction",
-    "pages/addTodo/addTodo",
-    "pages/updatelocation/updatelocation",
-    "pages/todoInfo/todoInfo",
     "pages/deployFunctions/deployFunctions",
     "pages/openapi/openapi",
     "pages/openapi/serverapi/serverapi",
     "pages/openapi/callback/callback",
     "pages/openapi/cloudid/cloudid",
-    "pages/login/login",
-    "pages/cover-view/cover-view",
-    "pages/about/about/about",
-    "pages/about/log/log",
-    "pages/about/former/former"
+    "pages/cover-view/cover-view"
   ],
   "requiredBackgroundModes": [
     "audio",
@@ -42,7 +41,6 @@
     "navigationBarTextStyle": "black",
     "navigationStyle": "custom"
   },
-
   "tabBar": {
     "color": "#999999",
     "selectedColor": "#000000",
@@ -77,7 +75,7 @@
   },
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom",
-    "van-button": "vant-weapp/button",
+    "van-button": "@vant/weapp/dist/button/index",
     "van-cell": "vant-weapp/cell",
     "van-cell-group": "vant-weapp/cell-group",
     "van-picker": "vant-weapp/picker",
@@ -86,7 +84,9 @@
     "van-tab": "vant-weapp/tab",
     "van-tabs": "vant-weapp/tabs",
     "van-grid": "@vant/weapp/grid",
-    "van-grid-item": "@vant/weapp/grid-item"
+    "van-grid-item": "@vant/weapp/grid-item",
+    "van-collapse": "@vant/weapp/dist/collapse/index",
+    "van-collapse-item": "@vant/weapp/dist/collapse-item/index"
   },
   "sitemapLocation": "sitemap.json"
 }
