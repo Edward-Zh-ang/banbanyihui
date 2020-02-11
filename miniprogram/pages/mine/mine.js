@@ -41,7 +41,7 @@ Component({
     wx.hideLoading()
   },
   methods: {
-    onGetUserInfo: function (e) {
+    onGetUserInfo: function (e) { 
       if (!this.logged && e.detail.userInfo) {
         app.globalData.userInfo = e.detail.userInfo;
         this.setData({
@@ -59,17 +59,6 @@ Component({
         e = (e / 10000).toFixed(1) + 'W'
       }
       return e
-    },
-    CopyLink(e) {
-      wx.setClipboardData({
-        data: e.currentTarget.dataset.link,
-        success: res => {
-          wx.showToast({
-            title: '已复制',
-            duration: 1000,
-          })
-        }
-      })
     },
     showModal(e) {
       this.setData({

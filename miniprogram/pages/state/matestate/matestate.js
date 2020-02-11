@@ -1,15 +1,25 @@
 // pages/state/matestate/matestate.js
 const app = getApp();
+const db = wx.cloud.database();
+const infoM = db.collection('userInfo');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    i: 0,
+    infoMa: [],
     addflag: true, //判断是否显示搜索框右侧部分
     addimg: '../../images/plus.png',
     searchstr: '',
     activeNames: ['1'],
+    username: '',
+    phone: '',
+    college: '',
+    plan: '',
+    birthday: '',
+    place: [],
     userURL: 'https://b.yzcdn.cn/vant/icon-demo-1126.png'
   },
 
@@ -17,24 +27,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function() {
-    this.setData({
-      userURL: 'https://b.yzcdn.cn/vant/icon-demo-1126.png',
-    });
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
   tap(e) {
 
   },
@@ -79,6 +74,29 @@ Page({
   onPageScroll(event) {
     this.setData({
       scrollTop: event.scrollTop
+    });
+  },
+
+
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function() {
+    var _this = this
+    infoM.get({
+      success: res => {
+        this.setData({
+          infoMa: res.data,
+        })
+      }
     });
   },
   /**

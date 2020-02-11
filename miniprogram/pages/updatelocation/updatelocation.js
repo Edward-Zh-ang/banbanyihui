@@ -1,35 +1,31 @@
+const app = getApp();
 const db = wx.cloud.database();
-const location = db.collection('user_location')
+const userin = db.collection('userInfo')
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    userInfo: {},
-    image: null,
-    longitude: [],
-    latitude: []
+    userURL: null,
+    address: '',
+    longitude: 0,
+    latitude: 0
   },
+
+
+
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // 获取用户信息
+
+  },
+  // 获取用户信息
+  getUserLocation: function () {
+    let vm = this
     wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              this.setData({
-                image: res.userInfo.avatarUrl,
-                userInfo: res.userInfo
-              })
-            }
-          })
-        }
+      success: res => { // 拒绝授权后再次进入重新授权
         if (res.authSetting['scope.userLocation'] != undefined && res.authSetting['scope.userLocation'] != true) {
           // console.log('authSetting:status:拒绝授权后再次进入重新授权', res.authSetting['scope.userLocation'])
           wx.showModal({
@@ -45,6 +41,9 @@ Page({
                   wx.navigateBack()
                 }, 1500)
               } else if (res.confirm) {
+                vm.setData({
+                  userURL: res.userInfo.avatarUrl,
+                })
                 wx.openSetting({
                   success: function (dataAu) {
                     // console.log('dataAu:success', dataAu)
@@ -66,19 +65,44 @@ Page({
             }
           })
         }
+        // 初始化进入，未授权
+        else if (res.authSetting['scope.userLocation'] == undefined) {
+          // console.log('authSetting:status:初始化进入，未授权', res.authSetting['scope.userLocation'])
+          //调用wx.getLocation的API
+          vm.getLocation(res)
+        }
+        // 已授权
+        else if (res.authSetting['scope.userLocation']) {
+          // console.log('authSetting:status:已授权', res.authSetting['scope.userLocation'])
+          //调用wx.getLocation的API
+          vm.getLocation(res)
+        }
       }
     })
   },
+
   // 微信获得经纬度
   getLocation: function (userLocation) {
     let vm = this
     wx.getLocation({
       type: "wgs84",
       success: function (res) {
-        // console.log('getLocation:success', res)
-        var latitude = res.latitude
-        var longitude = res.longitude
-        vm.getDaiShu(latitude, longitude)
+        console.log('getLocation:success', res)
+        vm.setData({
+          latitude: res.latitude,
+          longitude: res.longitude,
+        })
+        console.log(vm.data.latitude, vm.data.longitude)
+        userin.where({
+          _openId: app.globalData.openId
+        }).update({
+          data: {
+            marker: [vm.data.longitude, vm.data.latitude],
+          }
+        })
+        wx.showToast({
+          title: '位置更新完成！',
+        })
       },
       fail: function (res) {
         // console.log('getLocation:fail', res)
@@ -116,8 +140,55 @@ Page({
         }
       }
     })
+    wx.navigateBack({
+      url: "../index/index"
+    })
   },
-
+  addnewLoc: function () {
+    let vm = this
+    wx.showModal({
+      title: '亲爱的同学',
+      content: '请在地图上选点',
+      cancelText: '不用了',
+      confirmText: '下一步',
+      success: res => {
+        if (res.confirm) {
+          wx.chooseLocation({
+            success: function (res) {
+              console.log(res);
+              if (res.address) {
+                vm.setData({
+                  address: res.name,
+                  latitude: res.latitude,
+                  longitude: res.longitude,
+                })
+                userin.where({
+                  _openId: app.globalData.openId
+                }).update({
+                  data: {
+                    marker: [vm.data.longitude, vm.data.latitude],
+                  }
+                })
+                wx.showToast({
+                  title: '位置更新完成！',
+                })
+              }
+            }
+          })
+          if (!this.data.address) {
+            wx.showToast({
+              title: '请选择地点！',
+              icon: 'none'
+            });
+            return;
+          }
+        }
+      }
+    })
+    wx.navigateBack({
+      url: "../index/index"
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

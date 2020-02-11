@@ -5,8 +5,6 @@ Component({
     addGlobalClass: true,
   },
   data: {
-    StatusBar: app.globalData.StatusBar,
-    CustomBar: app.globalData.CustomBar,
     list: [{
       title: '通讯状态',
       img: 'https://image.weilanwl.com/color2.0/plugin/qpct2148.jpg',

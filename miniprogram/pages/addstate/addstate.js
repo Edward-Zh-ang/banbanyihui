@@ -7,20 +7,44 @@ Page({
    * 页面的初始数据
    */
   data: {
-    StatusBar: app.globalData.StatusBar,
-    CustomBar: app.globalData.CustomBar,
     focus: false,
-    name: '',
+    username: '',
     phone: '',
     college: '',
     plan: '',
+    userURL: '',
     date: '2020-02-10',
     region: ['广东省', '广州市', '天河区'],
     imgList: [],
+    openid: ''
   },
-  bindKeyInput: function (e) {
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
     this.setData({
-      inputValue: e.detail.value
+      openid: getApp().globalData.openid
+    })
+  },
+
+  _username: function (e) {
+    this.setData({
+      username: e.detail.value
+    })
+  },
+  _phone: function (e) {
+    this.setData({
+      phone: e.detail.value
+    })
+  },
+  _college: function (e) {
+    this.setData({
+      college: e.detail.value
+    })
+  },
+  _plan: function (e) {
+    this.setData({
+      plan: e.detail.value
     })
   },
 
@@ -74,32 +98,51 @@ Page({
       }
     })
   },
-  
-  handon: function (options) {
-    db.collection('userInfo').add({
-      // data 字段表示需新增的 JSON 数据
-      data: {
-        name: name,
-        tphone: phone,
-        college: '',
-        plan: '',
-        birthday: new Date(date),
-        place: new region,
-        imgList: [],
-        // 为待办事项添加一个地理位置（113°E，23°N）
-        location: new db.Geo.Point(113, 23),
-      },
-      success: function (res) {
-        // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
-        console.log(res)
+
+  handon: function (e) {
+    this.setData({
+      userURL: app.globalData.userInfo.avatarUrl,
+    })
+    wx.showModal({
+      title: '亲爱的同学',
+      content: '确定要上传这段通讯状态吗？',
+      cancelText: '再看看',
+      confirmText: '确认',
+      success: res => {
+        if (res.confirm) {
+          userInfo.where({ _openId:openId }).update({
+            // data 字段表示需新增的 JSON 数据
+            data: {
+              username: this.data.username,
+              userURL: this.data.userURL,
+              phone: this.data.phone,
+              college: this.data.college,
+              plan: this.data.plan,
+              birthday: new Date(this.data.date),
+              place: this.data.region,
+              pictures: this.data.imgList,
+            },
+            success: res => {
+              // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
+              wx.showToast({
+                title: '新增通讯成功',
+              })
+              console.log('[数据库] [新增记录] 成功，记录 _id: ', res._id)
+              wx.navigateBack({
+                url: '../state/matestate/matestate'
+              })
+            },
+            fail: err => {
+              wx.showToast({
+                icon: 'none',
+                title: '新增通讯失败'
+              })
+              console.error('[数据库] [新增记录] 失败：', err)
+            }
+          })
+        }
       }
     })
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
   },
 
   /**

@@ -7,6 +7,7 @@
     "van-skeleton": "@vant/weapp/dist/skeleton/index",
     "van-image": "@vant/weapp/dist/image/index",
     "van-index-bar": "@vant/weapp/dist/index-bar/index",
-    "van-index-anchor": "@vant/weapp/dist/index-anchor/index"
+    "van-index-anchor": "@vant/weapp/dist/index-anchor/index",
+    "van-card": "@vant/weapp/dist/card/index"
   }
 }
