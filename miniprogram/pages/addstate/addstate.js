@@ -110,7 +110,7 @@ Page({
       confirmText: '确认',
       success: res => {
         if (res.confirm) {
-          userInfo.where({ _openId:openId }).update({
+          userInfo.where({ _openId:app.globalData.openId }).update({
             // data 字段表示需新增的 JSON 数据
             data: {
               username: this.data.username,

@@ -6,7 +6,7 @@
   <view class="cover-view">
     <view class="flex-wrp" style="flex-direction:column;">
       <view class="flex-item">
-        <van-button id="updateBtn" bind:click="updateLo" round size="small" color="#4bb0ff">
+        <van-button id="updateBtn" bindgetuserinfo="updateLo" open-type="getUserInfo" round size="small" color="#4bb0ff">
           更新
         </van-button>
       </view>

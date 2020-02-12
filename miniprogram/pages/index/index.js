@@ -10,13 +10,27 @@ Page({
     scrollTop: 0
   },
 
-  updateLo: function (options) {
-    wx.navigateTo({
-      url: '../updatelocation/updatelocation',
-    })
+  updateLo: function(e) {
+    console.log(e)
+    if (e.detail.userInfo) {
+      app.globalData.userInfo = e.detail.userInfo;
+      wx.navigateTo({
+        url: '../updatelocation/updatelocation',
+      })
+    } else if (!e.detail.userInfo) {
+      wx.showModal({
+        title: '班班易会',
+        content: '请您到‘会空间’-微信登录',
+        confirmText: '马上登录',
+        success: res => {}
+      })
+      wx.navigateTo({
+        url: '../mine/mine',
+      })
+    }
   },
 
-  renewPage: function () {
+  renewPage: function() {
     wx.pageScrollTo({
       scrollTop: 300
     })
@@ -55,7 +69,6 @@ Page({
       that.setData({
         markers: tempArr,
         includepoints: includeArr,
-        count: res.data.count
       })
       console.log(that.data.markers)
     })
@@ -90,30 +103,29 @@ Page({
   onLaunch() {
 
   },
-  onLoad: function () {
+  onLoad: function() {
     wx.getSetting({
       success: res => { // 拒绝授权后再次进入重新授权
-        if ((res.authSetting['scope.userLocation'] == undefined) || (res.authSetting['scope.userInfo'] != undefined && res.authSetting['scope.userInfo'] != true)) {
+        if (res.authSetting['scope.userInfo'] == undefined || res.authSetting['scope.userInfo'] != true) {
           wx.showModal({
             title: '班班易会',
             content: '请您到‘会空间’-微信登录',
             confirmText: '马上登录',
-            success: res => {
-              wx.navigateTo({
-                url: '../mine/mine',
-              })
-            }
+            success: res => {}
+          })
+          wx.navigateTo({
+            url: '../mine/mine',
           })
         }
       }
     })
   },
-  onReady: function () {
+  onReady: function() {
 
   },
 
 
-  onShow: function () {
+  onShow: function() {
     let that = this
     location.get().then(res => {
       var list = res.data;
@@ -150,7 +162,6 @@ Page({
       that.setData({
         markers: tempArr,
         includepoints: includeArr,
-        count: res.data.count
       })
       console.log(that.data.markers)
     })
@@ -159,32 +170,32 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   },
 
-  onPageScroll: function (e) {
+  onPageScroll: function(e) {
     this.setData({
       scrollTop: e.scrollTop
     })

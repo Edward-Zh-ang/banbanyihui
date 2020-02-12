@@ -12,17 +12,15 @@ Page({
     latitude: 0
   },
 
-
-
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
 
   },
+
   // 获取用户信息
-  getUserLocation: function () {
+  getUserLocation: function (e) {
     let vm = this
     wx.getSetting({
       success: res => { // 拒绝授权后再次进入重新授权
@@ -41,9 +39,6 @@ Page({
                   wx.navigateBack()
                 }, 1500)
               } else if (res.confirm) {
-                vm.setData({
-                  userURL: res.userInfo.avatarUrl,
-                })
                 wx.openSetting({
                   success: function (dataAu) {
                     // console.log('dataAu:success', dataAu)
@@ -92,16 +87,36 @@ Page({
           latitude: res.latitude,
           longitude: res.longitude,
         })
-        console.log(vm.data.latitude, vm.data.longitude)
-        userin.where({
-          _openId: app.globalData.openId
-        }).update({
-          data: {
-            marker: [vm.data.longitude, vm.data.latitude],
+        wx.showModal({
+          title: '请选择',
+          content: '初次添加或者更新之前的记录（添加的地点不会自动改变）',
+          cancelText: '初次添加',
+          confirmText: '位置更新',
+          success: function (res) {
+            if (res.cancel) {
+              userin.add({
+                data: {
+                  userURL: app.globalData.userInfo.avatarUrl,
+                  marker: [vm.data.longitude, vm.data.latitude],
+                }
+              })
+              wx.showToast({
+                title: '位置添加完成！',
+              })
+            } else if (res.confirm) {
+              userin.where({
+                _openId: app.globalData.openid
+              }).update({
+                data: {
+                  userURL: app.globalData.userInfo.avatarUrl,
+                  marker: [vm.data.longitude, vm.data.latitude],
+                }
+              })
+              wx.showToast({
+                title: '位置更新完成！',
+              })
+            }
           }
-        })
-        wx.showToast({
-          title: '位置更新完成！',
         })
       },
       fail: function (res) {
@@ -144,10 +159,10 @@ Page({
       url: "../index/index"
     })
   },
-  addnewLoc: function () {
+  addnewLoc: function (e) {
     let vm = this
     wx.showModal({
-      title: '亲爱的同学',
+      title: '亲爱的GGMM',
       content: '请在地图上选点',
       cancelText: '不用了',
       confirmText: '下一步',
@@ -162,31 +177,45 @@ Page({
                   latitude: res.latitude,
                   longitude: res.longitude,
                 })
-                userin.where({
-                  _openId: app.globalData.openId
-                }).update({
-                  data: {
-                    marker: [vm.data.longitude, vm.data.latitude],
+                wx.showModal({
+                  title: '请选择',
+                  content: '初次添加或者更新之前的记录（添加的地点不会自动改变）',
+                  cancelText: '初次添加',
+                  confirmText: '位置更新',
+                  success: function (res) {
+                    if (res.cancel) {
+                      userin.add({
+                        data: {
+                          userURL: app.globalData.userInfo.avatarUrl,
+                          marker: [vm.data.longitude, vm.data.latitude],
+                        }
+                      })
+                      wx.showToast({
+                        title: '位置添加完成！',
+                      })
+                    } else if (res.confirm) {
+                      userin.where({
+                        _openId: app.globalData.openid
+                      }).update({
+                        data: {
+                          userURL: app.globalData.userInfo.avatarUrl,
+                          marker: [vm.data.longitude, vm.data.latitude],
+                        }
+                      })
+                      wx.showToast({
+                        title: '位置更新完成！',
+                      })
+                    }
+                    wx.navigateBack({
+                      url: "../index/index"
+                    })
                   }
-                })
-                wx.showToast({
-                  title: '位置更新完成！',
                 })
               }
             }
           })
-          if (!this.data.address) {
-            wx.showToast({
-              title: '请选择地点！',
-              icon: 'none'
-            });
-            return;
-          }
         }
       }
-    })
-    wx.navigateBack({
-      url: "../index/index"
     })
   },
 
