@@ -24,13 +24,11 @@ Page({
         confirmText: '马上登录',
         success: res => {}
       })
-      wx.navigateTo({
-        url: '../mine/mine',
-      })
     }
   },
 
   renewPage: function() {
+    var that = this
     wx.pageScrollTo({
       scrollTop: 300
     })
@@ -58,7 +56,6 @@ Page({
             'borderRadius': '4rpx'
           }
         }
-
         includeItem = {
           latitude: list[i].latitude,
           longitude: list[i].longitude,
@@ -71,6 +68,14 @@ Page({
         includepoints: includeArr,
       })
       console.log(that.data.markers)
+    })
+
+    wx.showModal({
+      title: '班班易会',
+      content: '请先添加位置，再到圈状态-通讯状态-+更新信息。本页面点击头像可显示人名。',
+      confirmText: '知道了',
+      success: res => {
+      }
     })
   },
 
@@ -165,6 +170,7 @@ Page({
       })
       console.log(that.data.markers)
     })
+    wx.startPullDownRefresh()
   },
 
   /**

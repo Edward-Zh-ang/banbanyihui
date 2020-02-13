@@ -11,7 +11,16 @@
   <van-collapse value="{{ activeNames }}" bind:change="onChange" accordion>
     <van-collapse-item wx:for="{{infoMa}}" wx:key="id" icon="{{item.userURL}}" title="{{item.username}}">
       <view class="content-class">
-        <van-card title="{{item.username}}" price="{{item.phone}}" tag="{{item.college}}" desc="{{item.plan}}" thumb="{{item.pictures}}" />
+        <view class='item'>
+          <text decode="true">
+          姓名: {{item.username}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电话: {{item.phone}} </text>
+        </view>
+        <view class='item'>
+          <text decode="true">生日: {{item.birthday}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  常驻位置: {{item.place}}</text>
+        </view>
+        <view class='item'>学校专业: {{item.college}}</view>
+        <view class='item'>近况及未来规划: {{item.plan}}</view>
+        <image class='img' url="{{item.pictures}}" />
       </view>
     </van-collapse-item>
   </van-collapse>

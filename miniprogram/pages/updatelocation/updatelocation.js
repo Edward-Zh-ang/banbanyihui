@@ -1,6 +1,7 @@
 const app = getApp();
 const db = wx.cloud.database();
-const userin = db.collection('userInfo')
+const userin = db.collection('userInfo');
+var time = require('../../utils/util.js');
 Page({
   /**
    * 页面的初始数据
@@ -98,6 +99,13 @@ Page({
                 data: {
                   userURL: app.globalData.userInfo.avatarUrl,
                   marker: [vm.data.longitude, vm.data.latitude],
+                  birthday: new Date(),
+                  college: 'initial',
+                  phone: '+86',
+                  pictures: ['initial'],
+                  place: ['initial'],
+                  plan: 'initial',
+                  username: app.globalData.userInfo.nickName
                 }
               })
               wx.showToast({
@@ -188,6 +196,13 @@ Page({
                         data: {
                           userURL: app.globalData.userInfo.avatarUrl,
                           marker: [vm.data.longitude, vm.data.latitude],
+                          birthday: new Date(),
+                          college: 'initial',
+                          phone: '+86',
+                          pictures: ['initial'],
+                          place: ['initial'],
+                          plan: 'initial',
+                          username: app.globalData.userInfo.nickName
                         }
                       })
                       wx.showToast({

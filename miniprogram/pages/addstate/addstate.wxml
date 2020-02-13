@@ -4,12 +4,12 @@
 </cu-custom>
 <form>
   <view class="cu-form-group margin-top">
-    <view class="title">姓名</view>
+    <view class="title">我的姓名</view>
     <input name="username" placeholder="请输入姓名" bindinput="_username"></input>
     <switch class="switch-sex" checked></switch>
   </view>
   <view class="cu-form-group">
-    <view class="title">手机</view>
+    <view class="title">手机号码</view>
     <input name="phone" placeholder="请输入电话" bindinput="_phone"></input>
     <view class="cu-capsule radius">
       <view class="cu-tag bg-blue">
@@ -21,12 +21,12 @@
     </view>
   </view>
   <view class="cu-form-group">
-    <view class="title">大学</view>
-    <input name="college" placeholder="请输入本科学校" bindinput="_college"></input>
+    <view class="title">学校/专业</view>
+    <input name="college" placeholder="请输入本科学校/专业" bindinput="_college"></input>
   </view>
   <view class="cu-form-group">
-    <view class="title">从事方向</view>
-    <textarea maxlength="-1" name="plan" placeholder="请输入本科毕业后大致学校或行业规划" placeholder-style="font-size:15px;" bindinput="_plan">
+    <view class="title">未来方向</view>
+    <textarea maxlength="-1" name="plan" placeholder="请输入近况及本科毕业后大致学校或行业规划（the more, the better）" placeholder-style="font-size:15px;" bindinput="_plan">
     </textarea>
   </view>
   <view class="cu-form-group">
@@ -67,4 +67,4 @@
     </view>
   </view>
 </form>
-<van-button class='flex-item' open-type="" plain type="primary" size="large" bindtap="handon">提交信息</van-button>
+<van-button class='flex-item' open-type="" plain type="primary" size="large" bindtap="handon">提交信息(包含更新)</van-button>
