@@ -1,126 +1,83 @@
 // pages/index/index.js
+const app = getApp();
 const db = wx.cloud.database();
-const location = db.collection('user_location')
+const location = db.collection('userInfo')
 Page({
-
-  /**
-   * 页面的初始数据
-   *   onShareAppMessage() {
-    return {
-      title: 'cover-view',
-      path: 'pages/cover-view/cover-view'
-    }
-  },
-   */
   data: {
-    longitude: [],
-    latitude: [],
+    longitude: [114.3612250000],
+    latitude: [36.0896300000],
     markers: [],
     scrollTop: 0
   },
-  onLaunch() {
-    wx.cloud.init({
-      traceUser: true,
-    })
-    wx.getSystemInfo({
-      success: function(res) {
-        that.globalData.statusBarHeight = res.statusBarHeight
-      }
-    })
-  },
-  updateLo: function(options) {
-    wx.navigateTo({
-      url: '../updatelocation/updatelocation',
-    })
+
+  updateLo: function(e) {
+    console.log(e)
+    if (e.detail.userInfo) {
+      app.globalData.userInfo = e.detail.userInfo;
+      wx.navigateTo({
+        url: '../updatelocation/updatelocation',
+      })
+    } else if (!e.detail.userInfo) {
+      wx.showModal({
+        title: '班班易会',
+        content: '请您到‘会空间’-微信登录',
+        confirmText: '马上登录',
+        success: res => {}
+      })
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  getMyMap(e) {
-    let that = this;
-    //自行查询经纬度 http://www.gpsspg.com/maps.htm
-    const mapLatitude = 36.0896300000,
-      mapLongitude = 114.3612250000;
-    wx.getLocation({
-      type: 'wgs84',
-      success(res) {
-        // 当前自己的经纬度 res.latitude，res.longitude
-        that.setData({
-          latitude: mapLatitude,
-          longitude: mapLongitude,
-          markers: [{
-            id: "0",
-            latitude: mapLatitude,
-            longitude: mapLongitude,
-            iconPath: "",
-            width: 40,
-            height: 40,
-            callout: {
-              'display': 'ALWAYS',
-              'fontSize': '30rpx',
-              'content': '安阳',
-              'padding': '8rpx',
-              'boxShadow': '0 0 5rpx #333',
-              'borderRadius': '4rpx'
-            }
-          }],
-        })
-      }
-    })
-  },
-  onLoad: function(options) {
-    /*.doc(options.id)*/
-    this.getMyMap()
-    location.get().then(res => {
-      this.setData({
-        longitude: res.longitude,
-        latitude: res.latitude,
-        markers: [{
-          longitude: res.longitude,
-          latitude: res.latitude,
-          iconPath: "",
-          width: 40,
-          height: 40,
-          callout: {
-            'display': 'ALWAYS',
-            'fontSize': '30rpx',
-            'content': '安阳',
-            'padding': '8rpx',
-            'boxShadow': '0 0 5rpx #333',
-            'borderRadius': '4rpx'
-          }
-        }]
-      })
-    })
-  },
   renewPage: function() {
+    var that = this
     wx.pageScrollTo({
       scrollTop: 300
     })
-    this.getMyMap()
     location.get().then(res => {
-      this.setData({
-        longitude: res.longitude,
-        latitude: res.latitude,
-        markers: [{
-          longitude: res.longitude,
-          latitude: res.latitude,
-          iconPath: "",
+      var list = res.data;
+      var tempArr = [];
+      var includeArr = [];
+      var item = {};
+      var includeItem = {};
+      for (var i = 0; i < res.data.length; i++) {
+        item = {
+          iconPath: list[i].userURL,
+          _id: list[i]._id,
+          latitude: list[i].marker[1],
+          longitude: list[i].marker[0],
           width: 40,
           height: 40,
+          alpha: 0.8,
           callout: {
-            'display': 'ALWAYS',
+            'display': 'BYCLICK',
             'fontSize': '30rpx',
-            'content': '安阳',
+            'content': list[i].username,
             'padding': '8rpx',
             'boxShadow': '0 0 5rpx #333',
             'borderRadius': '4rpx'
           }
-        }]
+        }
+        includeItem = {
+          latitude: list[i].latitude,
+          longitude: list[i].longitude,
+        }
+        tempArr.push(item);
+        includeArr.push(includeItem);
+      }
+      that.setData({
+        markers: tempArr,
+        includepoints: includeArr,
       })
+      console.log(that.data.markers)
+    })
+    wx.showModal({
+      title: '班班易会',
+      content: '请先添加位置，再到圈状态-通讯状态-+更新信息。本页面点击头像可显示人名。',
+      confirmText: '知道了',
+      success: res => {
+      }
     })
   },
+
   /*
     getBlessing: function () {
       var that = this;
@@ -138,58 +95,82 @@ Page({
             })
           }
         })
-
       }
 
+              var pic = getUserPic(list[i].user.user_pic, i);
       wx.request({
         url: '你的后台请求地址',
         method: 'POST',
-        success: function (res) {
-          var list = res.data.list;
-          var tempArr = [];
-          var includeArr = [];
-          var item = {};
-          var includeItem = {};
-          for (var i = 0; i < list.length; i++) {
-            var pic = getUserPic(list[i].user.user_pic, i);
-            item = {
-              iconPath: '/images/icon/small-logo.png',
-              id: list[i].id,
-              latitude: list[i].latitude,
-              longitude: list[i].longitude,
-              width: 30,
-              height: 30,
-              alpha: 0.8,
-            }
-
-            includeItem = {
-              latitude: list[i].latitude,
-              longitude: list[i].longitude,
-            }
-            tempArr.push(item);
-            includeArr.push(includeItem);
-          }
-          that.setData({
-            markers: tempArr,
-            includepoints: includeArr,
-            count: res.data.count
-          })
-          console.log(that.data.markers)
-        }
-      })
+       
     },
-    /**
-       * 生命周期函数--监听页面初次渲染完成
-       */
+   */
+  onLaunch() {
+
+  },
+  onLoad: function() {
+    wx.getSetting({
+      success: res => { // 拒绝授权后再次进入重新授权
+        if (res.authSetting['scope.userInfo'] == undefined || res.authSetting['scope.userInfo'] != true) {
+          wx.showModal({
+            title: '班班易会',
+            content: '请您到‘会空间’-微信登录',
+            confirmText: '马上登录',
+            success: res => {}
+          })
+          wx.navigateTo({
+            url: '../mine/mine',
+          })
+        }
+      }
+    })
+  },
   onReady: function() {
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
 
+  onShow: function() {
+    let that = this
+    location.get().then(res => {
+      var list = res.data;
+      var tempArr = [];
+      var includeArr = [];
+      var item = {};
+      var includeItem = {};
+      for (var i = 0; i < res.data.length; i++) {
+        item = {
+          iconPath: list[i].userURL,
+          _id: list[i]._id,
+          latitude: list[i].marker[1],
+          longitude: list[i].marker[0],
+          width: 40,
+          height: 40,
+          alpha: 0.8,
+          callout: {
+            'display': 'BYCLICK',
+            'fontSize': '30rpx',
+            'content': list[i].username,
+            'padding': '8rpx',
+            'boxShadow': '0 0 5rpx #333',
+            'borderRadius': '4rpx'
+          }
+        }
+
+        includeItem = {
+          latitude: list[i].latitude,
+          longitude: list[i].longitude,
+        }
+        tempArr.push(item);
+        includeArr.push(includeItem);
+      }
+      that.setData({
+        markers: tempArr,
+        includepoints: includeArr,
+      })
+      console.log(that.data.markers)
+    })
+    wx.startPullDownRefresh()
+    wx.stopPullDownRefresh()
   },
 
   /**

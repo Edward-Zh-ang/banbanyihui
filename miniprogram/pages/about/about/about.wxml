@@ -2,7 +2,7 @@
 <view class='margin-xl bg-white padding-xl radius shadow-lg'>
   <view class='text-center margin-bottom text-lg  text-grey'>关于~班班易会</view>
   <view class='text-content'>
-    <view>Hi！正值青春的你们~欢迎使用班班易会小程序！</view>
+    <view>Hi！正值青春的你们~欢迎使用班班易会小程序！班班易会，一期一会。为你提供全周期，全方位的同学会服务。</view>
     <view class='margin-top-sm'>该项目是我个人开发的一款旨在数字化同学会的高颜值微信小程序。这个项目不仅可以进行活动的通知记录、实时反馈，还可以汇集每个人的近况，将位置展示在起始页，可视化的拉近了人心的距离。</view>
     <view class='margin-top-sm'>项目是免费的，后期将会通过群组进入小程序功能面向单独的班级。</view>
     <view class='margin-top-sm'>该项目用到了ColorUI组件库，Vant-Weapp组件库，在此表示感谢。</view>

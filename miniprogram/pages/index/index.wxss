@@ -17,8 +17,8 @@
 }
 
 open-data[type="userAvatarUrl"] {
-  width: 100rpx;
-  height: 100rpx;
+  width: 20rpx;
+  height: 20rpx;
   border-radius: 50%;
   overflow: hidden;
 }

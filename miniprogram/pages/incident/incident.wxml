@@ -12,7 +12,7 @@
                 <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
                 <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
               </view>
-              <text>wearefamily</text>
+              <text>功能待开发</text>
             </view>
           </view>
         </view>

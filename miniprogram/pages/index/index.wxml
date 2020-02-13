@@ -1,18 +1,18 @@
 <!--pages/index/index.wxml-->
 <scroll-view scroll-y class="scrollPage">
   <image src='https://6261-banbanyihui-rzvml-1301142674.tcb.qcloud.la/images/banban.jpg?sign=0c5e1948f2880eeec3b6aedd10708c39&t=1581216071' mode='widthFix' class='png' style='width:100%;height:200rpx'></image>
-  <map id="{{id}}" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" bindmarkertap="markertap" scale="4" show-location layer-style="2" style="width: 100%; height: 520px;">
+  <map id="{{_id}}" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" bindmarkertap="markertap" scale="4" show-location layer-style="2" style="width: 100%; height: 520px;">
   </map>
   <view class="cover-view">
     <view class="flex-wrp" style="flex-direction:column;">
       <view class="flex-item">
-        <van-button id="updateBtn" bind:click="updateLo" round size="small" color="#4bb0ff">
+        <van-button id="updateBtn" bindgetuserinfo="updateLo" open-type="getUserInfo" round size="small" color="#4bb0ff">
           更新
         </van-button>
       </view>
       <view class="flex-item">
         <van-button id="renewBtn" bind:click="renewPage" round size="small" color="#4bb0ff">
-          复位
+          说明
         </van-button>
       </view>
     </view>

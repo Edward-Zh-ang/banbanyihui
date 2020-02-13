@@ -7,48 +7,24 @@
     <SearchBar id="SearchBar" addflag="{{addflag}}" addimg="{{addimg}}" searchstr="{{searchstr}}" bind:addhandle="addhandle" bind:searchList="searchList" bind:endsearchList="endsearchList" bind:cancelsearch="cancelsearch" bind:activity_clear="activity_clear">
     </SearchBar>
   </view>
+
   <van-collapse value="{{ activeNames }}" bind:change="onChange" accordion>
-    <van-index-bar scroll-top="{{ scrollTop }}">
-      <view>
-        <van-index-anchor index="A" />
-
-        <van-collapse-item name="1">
-          <view slot="title">
-            <van-icon name="{{userURL}}" size="5" /> 张恺祺 </view>
-          第一个人
-        </van-collapse-item>
+    <van-collapse-item wx:for="{{infoMa}}" wx:key="id" icon="{{item.userURL}}" title="{{item.username}}">
+      <view class="content-class">
+        <view class='item'>
+          <text decode="true">
+          姓名: {{item.username}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电话: {{item.phone}} </text>
+        </view>
+        <view class='item'>
+          <text decode="true">生日: {{item.birthday}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  常驻位置: {{item.place}}</text>
+        </view>
+        <view class='item'>学校专业: {{item.college}}</view>
+        <view class='item'>近况及未来规划: {{item.plan}}</view>
+        <image class='img' url="{{item.pictures}}" />
       </view>
-
-      <view>
-        <van-index-anchor index="B" />
-
-        <van-collapse-item name="2">
-          <view slot="title">
-            <van-icon name="{{userURL}}" size="5" /> 张恺祺 </view>
-          第二个人
-        </van-collapse-item>
-      </view>
-
-      <view>
-        <van-index-anchor index="C" />
-
-        <van-collapse-item name="3">
-          <view slot="title">
-            <van-icon name="{{userURL}}" size="5" /> 张恺祺 </view>
-          第三个人 </van-collapse-item>
-      </view>
-
-      <view>
-        <van-index-anchor index="D" />
-
-        <van-collapse-item name="4">
-          <view slot="title">
-            <van-icon name="{{userURL}}" size="5" /> 张恺祺 </view>
-          第四个人
-        </van-collapse-item>
-
-      </view>
-
-    </van-index-bar>
+    </van-collapse-item>
   </van-collapse>
+
+
+
 </scroll-view>

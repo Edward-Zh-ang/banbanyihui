@@ -30,12 +30,11 @@
   ],
   "permission": {
     "scope.userLocation": {
-      "desc": "请确认授权"
+      "desc": "你的位置信息将用于‘所在’展示，请确认授权"
     }
   },
   "window": {
-    "backgroundColor": "#FFFFFF",
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#FFFFFF",
     "navigationBarTitleText": "班班易会",
     "navigationBarTextStyle": "black",

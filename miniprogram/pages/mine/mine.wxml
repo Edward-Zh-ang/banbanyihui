@@ -1,6 +1,6 @@
 <scroll-view scroll-y class="scrollPage">
   <view class='UCenter-bg'>
-    <image open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" style="background-image: url({{avatarUrl}})"></image>
+    <image class="userinfo-avatar" style="background-image: url({{avatarUrl}})"></image>
     <view>
       <button class="userinfo-nickname" bindtap="onGetOpenid"></button>
       <open-data default-text="请登录" type="userNickName"></open-data>
