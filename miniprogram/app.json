@@ -34,8 +34,7 @@
     }
   },
   "window": {
-    "backgroundColor": "#FFFFFF",
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#FFFFFF",
     "navigationBarTitleText": "班班易会",
     "navigationBarTextStyle": "black",

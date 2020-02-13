@@ -69,7 +69,6 @@ Page({
       })
       console.log(that.data.markers)
     })
-
     wx.showModal({
       title: '班班易会',
       content: '请先添加位置，再到圈状态-通讯状态-+更新信息。本页面点击头像可显示人名。',
@@ -171,6 +170,7 @@ Page({
       console.log(that.data.markers)
     })
     wx.startPullDownRefresh()
+    wx.stopPullDownRefresh()
   },
 
   /**
